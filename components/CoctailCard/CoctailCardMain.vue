@@ -10,7 +10,7 @@
         {{ props.fetchedCoctail.strInstructions }}
       </div>
       <NuxtImg
-        v-if="!isNil(props.fetchedCoctail.strDrinkThumb)"
+        v-if="props.fetchedCoctail.strDrinkThumb"
         :src="props.fetchedCoctail.strDrinkThumb"
         width="150"
         cover
@@ -19,8 +19,8 @@
     </div>
     <p>List of ingredients:</p>
     <div v-for="ingredient of fetchedCoctail.ingredients">
-      <span v-if="!isNil(ingredient.name) && !isNil(ingredient.measure)"
-        >{{ ingredient.name }}: {{ ingredient.measure }}</span
+      <span v-if="ingredient.name || ingredient.measure"
+        >{{ ingredient.name ?? 'неизв.' }}: {{ ingredient.measure ?? 'неизв.' }}</span
       >
     </div>
     <hr />
@@ -28,7 +28,6 @@
 </template>
 <script setup lang="ts">
   import type { DrinkWithInjectedIngredients } from '@/types/coctails.model'
-  import { isNil } from 'lodash'
 
   const props = defineProps<{
     fetchedCoctail: DrinkWithInjectedIngredients
