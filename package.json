@@ -13,25 +13,29 @@
     "@nuxt/eslint": "1.2.0",
     "@nuxt/image": "1.10.0",
     "@pinia/nuxt": "0.10.1",
+    "@vueuse/core": "^13.0.0",
+    "lodash": "4.17.21",
     "nuxt": "3.16.1",
     "pinia": "^3.0.1",
     "typescript": "5.8.2",
-    "vue-router": "4.5.0",
-    "vue": "3.5.13"
+    "vue": "3.5.13",
+    "vue-router": "4.5.0"
   },
   "devDependencies": {
     "@nuxt/test-utils": "3.17.2",
+    "@types/lodash": "4.17.16",
     "@types/node": "22.13.13",
     "cssnano": "7.0.6",
+    "eslint": "9.23.0",
     "eslint-config-prettier": "10.1.1",
     "eslint-plugin-prettier": "5.2.5",
-    "eslint": "9.23.0",
     "prettier": "3.5.3",
+    "sass-embedded": "^1.86.0",
+    "stylelint": "16.16.0",
     "stylelint-config-recess-order": "6.0.0",
     "stylelint-config-recommended-vue": "1.6.0",
-    "stylelint-config-standard-scss": "14.0.0",
     "stylelint-config-standard": "37.0.0",
-    "stylelint-prettier": "5.0.3",
-    "stylelint": "16.16.0"
+    "stylelint-config-standard-scss": "14.0.0",
+    "stylelint-prettier": "5.0.3"
   }
 }

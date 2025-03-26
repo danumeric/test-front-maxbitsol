@@ -1,0 +1,8 @@
+:root {
+  --theme-background: 236, 239, 241;
+  --theme-primary: 38, 50, 56;
+  --button-default: 255, 224, 178;
+  --button-hover: 255, 204, 128;
+  --button-active: 255, 167, 38;
+  --button-pressed: 251, 140, 0;
+}

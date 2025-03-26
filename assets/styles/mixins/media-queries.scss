@@ -1,0 +1,101 @@
+/* stylelint-disable*/
+/* media mixin from bootstrap*/
+
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+) !default;
+
+// Media query mixin for min-width
+@mixin media-up($breakpoint) {
+  $min: map-get($breakpoints, $breakpoint);
+
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint `#{$breakpoint}`.";
+  }
+}
+
+// Media query mixin for max-width
+@mixin media-down($breakpoint) {
+  $max: map-get($breakpoints, $breakpoint) - 0.02px;
+
+  @if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint `#{$breakpoint}`.";
+  }
+}
+
+// Media query mixin for between two breakpoints
+@mixin media-between($lower, $upper) {
+  $min: map-get($breakpoints, $lower);
+  $max: map-get($breakpoints, $upper) - 0.02px;
+
+  @if $min and $max {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint(s) `#{$lower}` or `#{$upper}`.";
+  }
+}
+
+// Media query mixin for only one breakpoint
+@mixin media-only($breakpoint) {
+  $keys: map-keys($breakpoints);
+  $index: index($keys, $breakpoint);
+
+  @if $index {
+    @if $index == 1 {
+      // xs only
+      @include media-down(nth($keys, $index + 1)) {
+        @content;
+      }
+    } @else if $index == length($keys) {
+      // largest breakpoint only
+      @include media-up($breakpoint) {
+        @content;
+      }
+    } @else {
+      @include media-between($breakpoint, nth($keys, $index + 1)) {
+        @content;
+      }
+    }
+  } @else {
+    @error "Unknown breakpoint `#{$breakpoint}`.";
+  }
+}
+
+/*
+.element {
+  // Small devices (landscape phones, 576px and up)
+  @include media-up(sm) {
+   
+  }
+  
+  // Medium devices (tablets, less than 768px)
+  @include media-down(md) {
+ 
+  }
+  
+  // Large devices (desktops, between 992px and 1199.98px)
+  @include media-between(lg, xl) {
+  
+  }
+  
+  // Extra large devices (only 1200px)
+  @include media-only(xl) {
+  
+  }
+}
+*/
